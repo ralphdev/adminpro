@@ -7,12 +7,12 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef }
 })
 export class IncrementadorComponent implements OnInit {
 
-	@ViewChild('txtProgress', { static: true }) txtProgress: ElementRef;
+    @ViewChild('txtProgress', { static: true }) txtProgress: ElementRef;
 
-  @Input('nombre') leyenda: string = 'Leyenda';
-  @Input() progreso: number = 50;
+    @Input('nombre') leyenda: string = 'Leyenda';
+    @Input() progreso: number = 50;
 
-  @Output('actualizaValor') cambioValor: EventEmitter<number> = new EventEmitter();
+    @Output('actualizaValor') cambioValor: EventEmitter<number> = new EventEmitter();
 
   constructor() {}
 
@@ -31,14 +31,13 @@ export class IncrementadorComponent implements OnInit {
 
     this.progreso = this.progreso + valor;
 
-		this.cambioValor.emit(this.progreso);
-
-		this.txtProgress.nativeElement.focus();
+    this.cambioValor.emit(this.progreso);
+    this.txtProgress.nativeElement.focus();
   }
 
-  onChanges(newValue: number) {
+    onChanges(newValue: number) {
 
-		// let elementHTML: any = document.getElementsByName("progreso")[0];
+	// let elementHTML: any = document.getElementsByName("progreso")[0];
 
     if (newValue >= 100) {
       this.progreso = 100;
@@ -48,8 +47,8 @@ export class IncrementadorComponent implements OnInit {
       this.progreso = newValue;
     }
 
-		// elementHTML.value = this.progreso;
-		this.txtProgress.nativeElement = this.progreso;
+	// elementHTML.value = this.progreso;
+	this.txtProgress.nativeElement = this.progreso;
 
     this.cambioValor.emit(this.progreso);
   }
